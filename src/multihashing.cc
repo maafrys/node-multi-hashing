@@ -91,7 +91,6 @@ using namespace v8;
  DECLARE_CALLBACK(lyra2re, lyra2re_hash, 32);
  DECLARE_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
  DECLARE_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
- DECLARE_CALLBACK(lyra2z, lyra2z_hash, 32);
  DECLARE_CALLBACK(nist5, nist5_hash, 32);
  DECLARE_CALLBACK(quark, quark_hash, 32);
  DECLARE_CALLBACK(qubit, qubit_hash, 32);
