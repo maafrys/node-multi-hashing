@@ -216,7 +216,7 @@ DECLARE_FUNC(lyra2z) {
 
    lyra2z_hash(input, output, input_len);
 
-  
+   SET_BUFFER_RETURN(output, 32);
 }
 
 DECLARE_FUNC(neoscrypt) {
