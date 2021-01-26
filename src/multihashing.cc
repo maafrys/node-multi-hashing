@@ -198,6 +198,28 @@ DECLARE_FUNC(scrypt) {
    SET_BUFFER_RETURN(output, 32);
 }
 
+DECLARE_FUNC(lyra2z) {
+   if (info.Length() < 3)
+       RETURN_EXCEPT("You must provide buffer to hash, N value, and R value");
+
+   Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+
+   if(!Buffer::HasInstance(target))
+       RETURN_EXCEPT("Argument should be a buffer object.");
+
+   unsigned int nValue = Nan::To<uint32_t>(info[1]).ToChecked();
+   unsigned int rValue = Nan::To<uint32_t>(info[2]).ToChecked();
+
+   char * input = Buffer::Data(target);
+   char output[32];
+
+   uint32_t input_len = Buffer::Length(target);
+
+   lyra2z_hash(input, output, input_len);
+
+   SET_BUFFER_RETURN(output, 32);
+}
+
 DECLARE_FUNC(neoscrypt) {
    if (info.Length() < 2)
        RETURN_EXCEPT("You must provide two arguments");
